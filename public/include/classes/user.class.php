@@ -499,7 +499,7 @@ class User extends Base {
       $invitation->setUser($this);
       $invitation->setConfig($this->config);
       if (!$invitation->setActivated($aToken['id'])) {
-        $this->setErrorMessage('Unable to activate your invitation');
+        //$this->setErrorMessage('Unable to activate your invitation');
         return false;
       }
       // if (!$this->token->deleteToken($strToken)) {
