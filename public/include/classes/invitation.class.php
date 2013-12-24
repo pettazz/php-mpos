@@ -64,8 +64,7 @@ class Invitation extends Base {
       return 'This invitation token is invalid.';
     }
 
-    $stmt = $this->mysqli->prepare("SELECT is_activated FROM $this->table WHERE id = ?");
-    if (!$stmt && $stmt->bind_param('i', $iInvitationId) && $stmt->execute() && $stmt->bind_result($is_activated) && $stmt->fetch() && ($is_activated == 0)){
+    if($this->getSingle($iInvitationId, 'is_activated', 'id') == 1){
       return 'This invite has already been used.';
     }
 
