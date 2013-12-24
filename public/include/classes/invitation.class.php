@@ -61,7 +61,7 @@ class Invitation extends Base {
    **/
   public function setActivated($token_id) {
     if (!$iInvitationId = $this->getByTokenId($token_id)) {
-      return $this->getErrorMsg('E0030');
+      return 'This invitation token is invalid.';
     }
 
     $stmt = $this->mysqli->prepare("SELECT is_activated FROM $this->table WHERE id = ?");
