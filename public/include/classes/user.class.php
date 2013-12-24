@@ -502,10 +502,10 @@ class User extends Base {
         $this->setErrorMessage('Unable to activate your invitation');
         return false;
       }
-      if (!$this->token->deleteToken($strToken)) {
-        $this->setErrorMessage('Unable to remove used token');
-        return false;
-      }
+      // if (!$this->token->deleteToken($strToken)) {
+      //   $this->setErrorMessage('Unable to remove used token');
+      //   return false;
+      // }
     }
     if ($this->mysqli->query("SELECT id FROM $this->table LIMIT 1")->num_rows > 0) {
       ! $this->setting->getValue('accounts_confirm_email_disabled') ? $is_locked = 1 : $is_locked = 0;
