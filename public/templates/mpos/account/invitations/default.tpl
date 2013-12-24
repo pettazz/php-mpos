@@ -11,7 +11,7 @@
       </fieldset>
       <fieldset>
         <label>Message</label>
-        <textarea name="data[message]" rows="5">{$smarty.request.data.message|escape|default:"Please accept my invitation to this awesome pool."}</textarea>
+        <textarea name="data[message]" rows="5">{$smarty.request.data.message|escape|default:"JOIN ME BROTHER/SISTER IN THE GREAT AND GLORIOUS JOURNEY OF BRINGING DOGE TO THE MOON!"}</textarea>
       </fieldset>
     </div>
     <footer>
