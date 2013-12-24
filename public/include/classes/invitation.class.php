@@ -64,6 +64,13 @@ class Invitation extends Base {
       $this->setErrorMessage($this->getErrorMsg('E0030'));
       return false;
     }
+
+    $stmt = $this->mysqli->prepare("SELECT is_activated FROM $this->table WHERE id = ?");
+    if (!$stmt && $stmt->bind_param('i', $iInvitationId) && $stmt->execute() && $stmt->bind_result($is_activated) && $stmt->fetch() && ($is_activated == 0)){
+      $this->setErrorMessage('This invite has already been used.');
+      return false;
+    }
+
     $field = array('name' => 'is_activated', 'type' => 'i', 'value' => 1);
     return $this->updateSingle($iInvitationId, $field);
   }
