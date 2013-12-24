@@ -106,10 +106,10 @@ class Invitation extends Base {
       $this->setErrorMessage($this->getErrorMsg('E0025'));
       return false;
     }
-    if ($this->getByEmail($aData['email'])) {
-      $this->setErrorMessage($this->getErrorMsg('E0026'));
-      return false;
-    }
+    // if ($this->getByEmail($aData['email'])) {
+    //   $this->setErrorMessage($this->getErrorMsg('E0026'));
+    //   return false;
+    // }
     if (!$aData['token'] = $this->token->createToken('invitation', $account_id)) {
       $this->setErrorMessage($this->getErrorMsg('E0027', $this->token->getError()));
       return false;
