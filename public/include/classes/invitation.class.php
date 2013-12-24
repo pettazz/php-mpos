@@ -102,10 +102,10 @@ class Invitation extends Base {
       return false;
     }
     // Ensure this invitation does not exist yet nor do we have an account with that email
-    if ($this->user->getEmail($aData['email'])) {
-      $this->setErrorMessage($this->getErrorMsg('E0025'));
-      return false;
-    }
+    // if ($this->user->getEmail($aData['email'])) {
+    //   $this->setErrorMessage($this->getErrorMsg('E0025'));
+    //   return false;
+    // }
     // if ($this->getByEmail($aData['email'])) {
     //   $this->setErrorMessage($this->getErrorMsg('E0026'));
     //   return false;
