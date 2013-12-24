@@ -61,14 +61,12 @@ class Invitation extends Base {
    **/
   public function setActivated($token_id) {
     if (!$iInvitationId = $this->getByTokenId($token_id)) {
-      $this->setErrorMessage($this->getErrorMsg('E0030'));
-      return false;
+      return $this->getErrorMsg('E0030');
     }
 
     $stmt = $this->mysqli->prepare("SELECT is_activated FROM $this->table WHERE id = ?");
     if (!$stmt && $stmt->bind_param('i', $iInvitationId) && $stmt->execute() && $stmt->bind_result($is_activated) && $stmt->fetch() && ($is_activated == 0)){
-      $this->setErrorMessage('This invite has already been used.');
-      return false;
+      return 'This invite has already been used.';
     }
 
     $field = array('name' => 'is_activated', 'type' => 'i', 'value' => 1);

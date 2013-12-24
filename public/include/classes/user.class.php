@@ -498,8 +498,9 @@ class User extends Base {
       $invitation->setDebug($this->debug);
       $invitation->setUser($this);
       $invitation->setConfig($this->config);
-      if (!$invitation->setActivated($aToken['id'])) {
-        //$this->setErrorMessage('Unable to activate your invitation');
+      $activationAttempt = $invitation->setActivated($aToken['id']);
+      if (!($activationAttempt === true)) {
+        $this->setErrorMessage($activationAttempt);
         return false;
       }
       // if (!$this->token->deleteToken($strToken)) {
