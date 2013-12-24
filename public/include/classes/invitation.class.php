@@ -13,7 +13,7 @@ class Invitation extends Base {
    **/
   public function getInvitations($account_id) {
     $this->debug->append("STA " . __METHOD__, 4);
-    $stmt = $this->mysqli->prepare("SELECT A.id AS id, A.account_id AS account_id, A.email AS email, A.token_id AS token_id, A.is_activated AS is_activated, A.time AS time, T.token AS token FROM $this->table I, token T WHERE I.account_id = ? AND T.id = I.token_id");
+    $stmt = $this->mysqli->prepare("SELECT A.id AS id, A.account_id AS account_id, A.email AS email, A.token_id AS token_id, A.is_activated AS is_activated, A.time AS time, T.token AS token FROM $this->table I, tokens T WHERE I.account_id = ? AND T.id = I.token_id");
     if ($stmt && $stmt->bind_param('i', $account_id) && $stmt->execute() && $result = $stmt->get_result())
       return $result->fetch_all(MYSQLI_ASSOC);
     $this->sqlError('E0021');
