@@ -35,7 +35,7 @@
     <tbody>
 {section name=invite loop=$INVITATIONS}
       <tr>
-        <td>{$INVITATIONS[invite].token_id}</td>
+        <td>{$INVITATIONS[invite].token}</td>
         <td align="center">{$INVITATIONS[invite].time|date_format:"%d/%m/%Y %H:%M:%S"}</td>
         <td align="center"><i class="icon-{if $INVITATIONS[invite].is_activated}ok{else}cancel{/if}"></i></td>
       </tr>
