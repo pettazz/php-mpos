@@ -27,7 +27,7 @@
   <table class="tablesorter" cellspacing="0">
     <thead style="font-size:13px;">
       <tr>
-        <th>E-Mail</th>
+        <th>Token</th>
         <th align="center">Sent</th>
         <th align="center">Activated</th>
       </tr>
@@ -35,7 +35,7 @@
     <tbody>
 {section name=invite loop=$INVITATIONS}
       <tr>
-        <td>{$INVITATIONS[invite].email}</td>
+        <td>{$INVITATIONS[invite].token_id}</td>
         <td align="center">{$INVITATIONS[invite].time|date_format:"%d/%m/%Y %H:%M:%S"}</td>
         <td align="center"><i class="icon-{if $INVITATIONS[invite].is_activated}ok{else}cancel{/if}"></i></td>
       </tr>

@@ -93,10 +93,10 @@ class Invitation extends Base {
   public function sendInvitation($account_id, $aData) {
     $this->debug->append("STA " . __METHOD__, 4);
     // Check data input
-    if (empty($aData['email']) || !filter_var($aData['email'], FILTER_VALIDATE_EMAIL)) {
-      $this->setErrorMessage($this->getErrorMsg('E0023'));
-      return false;
-    }
+    // if (empty($aData['email']) || !filter_var($aData['email'], FILTER_VALIDATE_EMAIL)) {
+    //   $this->setErrorMessage($this->getErrorMsg('E0023'));
+    //   return false;
+    // }
     if (preg_match('/[^a-z_\.\!\?\-0-9 ]/i', $aData['message'])) {
       $this->setErrorMessage($this->getErrorMsg('E0024'));
       return false;
@@ -116,14 +116,14 @@ class Invitation extends Base {
     }
     $aData['username'] = $this->user->getUserName($account_id);
     $aData['subject'] = 'Pending Invitation';
-    if ($this->mail->sendMail('invitations/body', $aData)) {
+    // if ($this->mail->sendMail('invitations/body', $aData)) {
       $aToken = $this->token->getToken($aData['token']);
       if (!$this->createInvitation($account_id, $aData['email'], $aToken['id']))
         return false;
       return true;
-    } else {
-      $this->setErrorMessage($this->getErrorMsg('E0028'));
-    }
+    // } else {
+    //   $this->setErrorMessage($this->getErrorMsg('E0028'));
+    // }
     $this->setErrorMessage($this->getErrorMsg('E0029'));
     return false;
   }
